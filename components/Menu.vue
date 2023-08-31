@@ -24,7 +24,7 @@
         <span class="text-xs lg:text-base">Jogadores</span>
       </a>
     </li>
-    <li class="hidden">
+    <li class="hidden lg:block">
       <a class="text-center font-light hover:underline tracking-widest px-2 lg:px-6 py-2 flex flex-col lg:flex-row items-center gap-2" href="#patrocinadores">
         <Icon name="material-symbols:attach-money-rounded" />
         <span class="text-xs lg:text-base">Patrocinadores</span>
