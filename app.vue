@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 useHead({
-  title: '5ª Copa Splendor Garden'
+  title: '5ª Copa Splendor Garden',
+  link: [
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+  ]
 })
 </script>
 
