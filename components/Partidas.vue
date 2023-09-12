@@ -9,13 +9,13 @@ import calendario from '../data/calendario.json'
         <h3 class="text-center text-2xl font-bold italic mb-2">{{ item.data }}</h3>
         <table class="w-full">
           <tr v-for="partida in item.partidas">
-            <td class="px-4 py-3 w-20">{{ partida.hora }}</td>
-            <td class="px-4 py-3 w-1/3 text-xl text-right">{{ partida.equipe1 }}</td>
-            <td class="px-4 py-3 w-20 font-bold text-lg text-center">
+            <td class="px-1 py-2 md:px-4 md:py-3 text-sm md:text-base">{{ partida.hora }}</td>
+            <td class="px-1 py-2 md:px-4 md:py-3 text-sm md:text-xl text-right">{{ partida.equipe1 }}</td>
+            <td class="px-1 py-2 md:px-4 md:py-3 font-bold text-sm md:text-lg text-center">
               <span v-if="partida.placar">{{ partida.placar[0] }} x {{ partida.placar[1] }}</span>
               <span v-else>-</span>
             </td>
-            <td class="px-4 py-3 w-1/3 text-xl">{{ partida.equipe2 }}</td>
+            <td class="px-1 py-2 md:px-4 md:py-3 text-sm md:text-xl">{{ partida.equipe2 }}</td>
           </tr>
         </table>
       </div>
