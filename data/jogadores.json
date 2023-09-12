@@ -1,21 +1,3 @@
-{
-  "partidas": [
-    { "date": "01/10/2023", "equipe1": "Equipe A", "equipe2": "Equipe B", "placar": [0, 0] },
-    { "date": "01/10/2023", "equipe1": "Equipe A", "equipe2": "Equipe B", "placar": [0, 0] },
-    { "date": "01/10/2023", "equipe1": "Equipe A", "equipe2": "Equipe B", "placar": [0, 0] },
-    { "date": "01/10/2023", "equipe1": "Equipe A", "equipe2": "Equipe B", "placar": [0, 0] },
-    { "date": "01/10/2023", "equipe1": "Equipe A", "equipe2": "Equipe B", "placar": [0, 0] }
-  ],
-  "equipes": [
-    { "name": "Equipe A", "image": "" },
-    { "name": "Equipe B", "image": "" },
-    { "name": "Equipe C", "image": "" },
-    { "name": "Equipe D", "image": "" },
-    { "name": "Equipe E", "image": "" },
-    { "name": "Equipe F", "image": "" }
-  ],
-  "jogadores": [
-    { "avatar": "", "nome": "Ricardo Gobbo", "email": "", "posicao": "meio", "equipe": "Equipe A", "gols": 1 },
-    { "avatar": "", "nome": "Ricardo Gobbo", "email": "", "posicao": "meio", "equipe": "Equipe B", "gols": 1 }
-  ]
-}
+[
+  { "avatar": "", "nome": "Jogador A", "email": "", "posicao": "Meio", "equipe": "Equipe A", "gols": 0 }
+]

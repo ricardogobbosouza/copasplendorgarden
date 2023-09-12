@@ -1,9 +1,13 @@
+<script setup lang="ts">
+import equipes from '../data/equipes.json'
+</script>
+
 <template>
-  <Box title="Equipes">
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 p-6">
-      <div v-for="i in 6" class="flex items-center justify-center gap-2">
-        <Icon name="ic:person" class="w-10 h-10" />
-        <span>Equipe A</span>
+  <Box id="equipes" title="Equipes">
+    <div class="grid md:grid-cols-2 gap-10 p-6">
+      <div v-for="equipe in equipes" class="flex items-center gap-2">
+        <img class="w-12 h-12 object-contain" :src="equipe.image" />
+        <span>{{ equipe.name }}</span>
       </div>
     </div>
   </Box>

@@ -1,5 +1,24 @@
+<script setup lang="ts">
+import equipes from '../data/equipes.json'
+
+const classificacao = computed(() => {
+  return equipes.map((equipe) => {
+    return {
+      equipe: equipe.name,
+      pts: 0,
+      pj: 0,
+      vit: 0,
+      e: 0,
+      der: 0,
+      gm: 0,
+      gc: 0,
+      sg: 0,
+    }
+  }).sort((a, b) => a.pts < b.pts ? 1 : (a.pts > b.pts ? -1 : 0))
+})
+</script>
 <template>
-  <Box title="Classificação">
+  <Box id="classificacao" title="Classificação">
     <table class="w-full">
       <thead>
         <tr>
@@ -15,16 +34,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="i in 6">
-          <td class="px-4 py-3">Equipe</td>
-          <td class="px-4 py-3 text-center">10</td>
-          <td class="px-4 py-3 text-center">21</td>
-          <td class="px-4 py-3 text-center">16</td>
-          <td class="px-4 py-3 text-center">3</td>
-          <td class="px-4 py-3 text-center">2</td>
-          <td class="px-4 py-3 text-center">10</td>
-          <td class="px-4 py-3 text-center">5</td>
-          <td class="px-4 py-3 text-center">5</td>
+        <tr v-for="item in classificacao">
+          <td class="px-4 py-3">{{ item.equipe }}</td>
+          <td class="px-4 py-3 text-center">{{ item.pts }}</td>
+          <td class="px-4 py-3 text-center">{{ item.pj }}</td>
+          <td class="px-4 py-3 text-center">{{ item.vit }}</td>
+          <td class="px-4 py-3 text-center">{{ item.e }}</td>
+          <td class="px-4 py-3 text-center">{{ item.der }}</td>
+          <td class="px-4 py-3 text-center">{{ item.gm }}</td>
+          <td class="px-4 py-3 text-center">{{ item.gc }}</td>
+          <td class="px-4 py-3 text-center">{{ item.sg }}</td>
         </tr>
       </tbody>
     </table>

@@ -1,0 +1,10 @@
+[
+  { "name": "América RN", "image": "/equipes/america-rn.png" },
+  { "name": "Bahia", "image": "/equipes/bahia.png" },
+  { "name": "Ceará", "image": "/equipes/ceara.png" },
+  { "name": "Fortaleza", "image": "/equipes/fortaleza.png" },
+  { "name": "Paysandu", "image": "/equipes/paysandu.png" },
+  { "name": "Remo", "image": "/equipes/remo.png" },
+  { "name": "Sampaio Corrêa", "image": "/equipes/sampaio-correa.png" },
+  { "name": "Sport", "image": "/equipes/sport.png" }
+]

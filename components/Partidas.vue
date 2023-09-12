@@ -1,33 +1,21 @@
+<script setup lang="ts">
+import calendario from '../data/calendario.json'
+</script>
+
 <template>
-  <Box title="Partidas">
+  <Box id="partidas" title="Partidas">
     <div class="flex flex-col divide-y gap-">
-      <div class="py-6">
-        <h3 class="text-center text-xl font-bold italic">01/10/2023</h3>
+      <div v-for="item in calendario" class="py-6">
+        <h3 class="text-center text-2xl font-bold italic mb-2">{{ item.data }}</h3>
         <table class="w-full">
-          <tr>
-            <td class="px-4 py-3 w-1/3 text-xl">Equipe A</td>
-            <td class="px-4 py-3 w-1/3 font-bold text-lg text-center">4 x 0</td>
-            <td class="px-4 py-3 w-1/3 text-xl">Equipe B</td>
-          </tr>
-          <tr>
-            <td class="px-4 py-3 w-1/3 text-xl">Equipe A</td>
-            <td class="px-4 py-3 w-1/3 font-bold text-lg text-center">4 x 0</td>
-            <td class="px-4 py-3 w-1/3 text-xl">Equipe B</td>
-          </tr>
-        </table>
-      </div>
-      <div class="py-6">
-        <h3 class="text-center text-xl font-bold italic">01/10/2023</h3>
-        <table class="w-full">
-          <tr>
-            <td class="px-4 py-3 w-1/3 text-xl">Equipe A</td>
-            <td class="px-4 py-3 w-1/3 font-bold text-lg text-center">4 x 0</td>
-            <td class="px-4 py-3 w-1/3 text-xl">Equipe B</td>
-          </tr>
-          <tr>
-            <td class="px-4 py-3 w-1/3 text-xl">Equipe A</td>
-            <td class="px-4 py-3 w-1/3 font-bold text-lg text-center">4 x 0</td>
-            <td class="px-4 py-3 w-1/3 text-xl">Equipe B</td>
+          <tr v-for="partida in item.partidas">
+            <td class="px-4 py-3 w-20">{{ partida.hora }}</td>
+            <td class="px-4 py-3 w-1/3 text-xl text-right">{{ partida.equipe1 }}</td>
+            <td class="px-4 py-3 w-20 font-bold text-lg text-center">
+              <span v-if="partida.placar">{{ partida.placar[0] }} x {{ partida.placar[1] }}</span>
+              <span v-else>-</span>
+            </td>
+            <td class="px-4 py-3 w-1/3 text-xl">{{ partida.equipe2 }}</td>
           </tr>
         </table>
       </div>
