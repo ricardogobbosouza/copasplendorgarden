@@ -4,7 +4,7 @@ import equipes from '../data/equipes.json'
 const classificacao = computed(() => {
   return equipes.map((equipe) => {
     return {
-      equipe: equipe.name,
+      equipe: equipe.nome,
       pts: 0,
       pj: 0,
       vit: 0,

@@ -1,10 +1,10 @@
 [
-  { "name": "América RN", "image": "/equipes/america-rn.png" },
-  { "name": "Bahia", "image": "/equipes/bahia.png" },
-  { "name": "Ceará", "image": "/equipes/ceara.png" },
-  { "name": "Fortaleza", "image": "/equipes/fortaleza.png" },
-  { "name": "Paysandu", "image": "/equipes/paysandu.png" },
-  { "name": "Remo", "image": "/equipes/remo.png" },
-  { "name": "Sampaio Corrêa", "image": "/equipes/sampaio-correa.png" },
-  { "name": "Sport", "image": "/equipes/sport.png" }
+  { "nome": "América RN", "imagem": "/equipes/america-rn.png" },
+  { "nome": "Bahia", "imagem": "/equipes/bahia.png" },
+  { "nome": "Ceará", "imagem": "/equipes/ceara.png" },
+  { "nome": "Fortaleza", "imagem": "/equipes/fortaleza.png" },
+  { "nome": "Paysandu", "imagem": "/equipes/paysandu.png" },
+  { "nome": "Remo", "imagem": "/equipes/remo.png" },
+  { "nome": "Sampaio Corrêa", "imagem": "/equipes/sampaio-correa.png" },
+  { "nome": "Sport", "imagem": "/equipes/sport.png" }
 ]
