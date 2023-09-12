@@ -31,4 +31,10 @@
       </a>
     </li>
   </ul>
+  <div class="flex justify-center mt-4">
+    <a class="text-center font-light hover:underline tracking-widest flex items-center justify-center gap-2" href="/regulamento.docx" target="_blank">
+      <Icon name="mdi:file-document-outline" />
+      <span class="text-xs lg:text-base">Regulamento</span>
+    </a>
+  </div>
 </template>
