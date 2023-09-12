@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import jogadores from '../data/jogadores.json'
+import equipes from '../data/equipes.json'
+
+const getEquipeImage = (name: string) => {
+  return equipes.find((equipe) => equipe.name === name)
+}
 </script>
 
 <template>
@@ -10,11 +15,14 @@ import jogadores from '../data/jogadores.json'
         class="flex items-center justify-between gap-2 p-4"
       >
         <div class="flex items-center gap-2">
-          <Icon name="ic:person" class="w-10 h-10" />
+          <img
+            v-if="jogador.equipe && getEquipeImage(jogador.equipe)"
+            class="w-12 h-12 object-contain"
+            :src="getEquipeImage(jogador.equipe)?.image"
+          />
           <div class="flex flex-col">
             <span class="uppercase">{{ jogador.nome }}</span>
             <span class="text-sm">Posição: {{ jogador.posicao }}</span>
-            <span class="text-sm">Equipe: {{ jogador.equipe }}</span>
           </div>
         </div>
         <div class="flex gap-2 items-center">
