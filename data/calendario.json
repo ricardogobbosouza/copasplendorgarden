@@ -3,10 +3,10 @@
     "data": "01/10",
     "partidas":
     [
-      { "hora": "08:00hs", "equipe1": "Sampaio Corrêa", "equipe2": "Paysandu", "placar": [0, 0] },
-      { "hora": "09:00hs", "equipe1": "Sport", "equipe2": "Ceará", "placar": [0, 0] },
-      { "hora": "10:00hs", "equipe1": "Bahia", "equipe2": "Fortaleza", "placar": [0, 0] },
-      { "hora": "11:00hs", "equipe1": "Remo", "equipe2": "América RN", "placar": [0, 0] }
+      { "hora": "08:00hs", "equipe1": "Sampaio Corrêa", "equipe2": "Paysandu", "placar": [6, 3] },
+      { "hora": "09:00hs", "equipe1": "Sport", "equipe2": "Ceará", "placar": [5, 2] },
+      { "hora": "10:00hs", "equipe1": "Bahia", "equipe2": "Fortaleza", "placar": [2, 7] },
+      { "hora": "11:00hs", "equipe1": "Remo", "equipe2": "América RN", "placar": [1, 2] }
     ]
   },
 
@@ -14,10 +14,10 @@
     "data": "08/10",
     "partidas":
     [
-      { "hora": "08:00hs", "equipe1": "Remo", "equipe2": "Bahia", "placar": [0, 0] },
-      { "hora": "09:00hs", "equipe1": "Sampaio Corrêa", "equipe2": "Sport", "placar": [0, 0] },
-      { "hora": "10:00hs", "equipe1": "Paysandu", "equipe2": "América RN", "placar": [0, 0] },
-      { "hora": "11:00hs", "equipe1": "Fortaleza", "equipe2": "Ceará", "placar": [0, 0] }
+      { "hora": "08:00hs", "equipe1": "Remo", "equipe2": "Bahia", "placar": null },
+      { "hora": "09:00hs", "equipe1": "Sampaio Corrêa", "equipe2": "Sport", "placar": null },
+      { "hora": "10:00hs", "equipe1": "Paysandu", "equipe2": "América RN", "placar": null },
+      { "hora": "11:00hs", "equipe1": "Fortaleza", "equipe2": "Ceará", "placar": null }
     ]
   },
 
@@ -25,10 +25,10 @@
     "data": "22/10",
     "partidas":
     [
-      { "hora": "08:00hs", "equipe1": "Fortaleza", "equipe2": "Remo", "placar": [0, 0] },
-      { "hora": "09:00hs", "equipe1": "Bahia", "equipe2": "América RN", "placar": [0, 0] },
-      { "hora": "10:00hs", "equipe1": "Sampaio Corrêa", "equipe2": "Ceará", "placar": [0, 0] },
-      { "hora": "11:00hs", "equipe1": "Sport", "equipe2": "Paysandu", "placar": [0, 0] }
+      { "hora": "08:00hs", "equipe1": "Fortaleza", "equipe2": "Remo", "placar": null },
+      { "hora": "09:00hs", "equipe1": "Bahia", "equipe2": "América RN", "placar": null },
+      { "hora": "10:00hs", "equipe1": "Sampaio Corrêa", "equipe2": "Ceará", "placar": null },
+      { "hora": "11:00hs", "equipe1": "Sport", "equipe2": "Paysandu", "placar": null }
     ]
   },
 
@@ -36,10 +36,10 @@
     "data": "28/10",
     "partidas":
     [
-      { "hora": "08:00hs", "equipe1": "Ceará", "equipe2": "Paysandu", "placar": [0, 0] },
-      { "hora": "09:00hs", "equipe1": "América RN", "equipe2": "Fortaleza", "placar": [0, 0] },
-      { "hora": "10:00hs", "equipe1": "Sport", "equipe2": "Remo", "placar": [0, 0] },
-      { "hora": "11:00hs", "equipe1": "Sampaio Corrêa", "equipe2": "Bahia", "placar": [0, 0] }
+      { "hora": "08:00hs", "equipe1": "Ceará", "equipe2": "Paysandu", "placar": null },
+      { "hora": "09:00hs", "equipe1": "América RN", "equipe2": "Fortaleza", "placar": null },
+      { "hora": "10:00hs", "equipe1": "Sport", "equipe2": "Remo", "placar": null },
+      { "hora": "11:00hs", "equipe1": "Sampaio Corrêa", "equipe2": "Bahia", "placar": null }
     ]
   },
 
@@ -47,10 +47,10 @@
     "data": "12/11",
     "partidas":
     [
-      { "hora": "08:00hs", "equipe1": "Sampaio Corrêa", "equipe2": "Fortaleza", "placar": [0, 0] },
-      { "hora": "09:00hs", "equipe1": "Bahia", "equipe2": "Paysandu", "placar": [0, 0] },
-      { "hora": "10:00hs", "equipe1": "Ceará", "equipe2": "Remo", "placar": [0, 0] },
-      { "hora": "11:00hs", "equipe1": "América RN", "equipe2": "Sport", "placar": [0, 0] }
+      { "hora": "08:00hs", "equipe1": "Sampaio Corrêa", "equipe2": "Fortaleza", "placar": null },
+      { "hora": "09:00hs", "equipe1": "Bahia", "equipe2": "Paysandu", "placar": null },
+      { "hora": "10:00hs", "equipe1": "Ceará", "equipe2": "Remo", "placar": null },
+      { "hora": "11:00hs", "equipe1": "América RN", "equipe2": "Sport", "placar": null }
     ]
   },
 
@@ -58,10 +58,10 @@
     "data": "15/11",
     "partidas":
     [
-      { "hora": "08:00hs", "equipe1": "Bahia", "equipe2": "Sport", "placar": [0, 0] },
-      { "hora": "09:00hs", "equipe1": "Sampaio Corrêa", "equipe2": "Remo", "placar": [0, 0] },
-      { "hora": "10:00hs", "equipe1": "Ceará", "equipe2": "América RN", "placar": [0, 0] },
-      { "hora": "11:00hs", "equipe1": "Fortaleza", "equipe2": "Paysandu", "placar": [0, 0] }
+      { "hora": "08:00hs", "equipe1": "Bahia", "equipe2": "Sport", "placar": null },
+      { "hora": "09:00hs", "equipe1": "Sampaio Corrêa", "equipe2": "Remo", "placar": null },
+      { "hora": "10:00hs", "equipe1": "Ceará", "equipe2": "América RN", "placar": null },
+      { "hora": "11:00hs", "equipe1": "Fortaleza", "equipe2": "Paysandu", "placar": null }
     ]
   },
 
@@ -69,10 +69,10 @@
     "data": "19/11",
     "partidas":
     [
-      { "hora": "08:00hs", "equipe1": "Remo", "equipe2": "Paysandu", "placar": [0, 0] },
-      { "hora": "09:00hs", "equipe1": "Fortaleza", "equipe2": "Sport", "placar": [0, 0] },
-      { "hora": "10:00hs", "equipe1": "Sampaio Corrêa", "equipe2": "América RN", "placar": [0, 0] },
-      { "hora": "11:00hs", "equipe1": "Bahia", "equipe2": "Ceará", "placar": [0, 0] }
+      { "hora": "08:00hs", "equipe1": "Remo", "equipe2": "Paysandu", "placar": null },
+      { "hora": "09:00hs", "equipe1": "Fortaleza", "equipe2": "Sport", "placar": null },
+      { "hora": "10:00hs", "equipe1": "Sampaio Corrêa", "equipe2": "América RN", "placar": null },
+      { "hora": "11:00hs", "equipe1": "Bahia", "equipe2": "Ceará", "placar": null }
     ]
   },
 
@@ -80,8 +80,8 @@
     "data": "26/11 - Repescagem",
     "partidas":
     [
-      { "hora": "09:00hs", "equipe1": "3º Colocado", "equipe2": "6º Colocado", "placar": [0, 0] },
-      { "hora": "10:00hs", "equipe1": "4º Colocado", "equipe2": "5º Colocado", "placar": [0, 0] }
+      { "hora": "09:00hs", "equipe1": "3º Colocado", "equipe2": "6º Colocado", "placar": null },
+      { "hora": "10:00hs", "equipe1": "4º Colocado", "equipe2": "5º Colocado", "placar": null }
     ]
   },
 
@@ -89,8 +89,8 @@
     "data": "03/12 - Semi Finais",
     "partidas":
     [
-      { "hora": "09:00hs", "equipe1": "1º Colocado", "equipe2": "Vencedor (Jogo 1)", "placar": [0, 0] },
-      { "hora": "10:00hs", "equipe1": "2º Colocado", "equipe2": "Vencedor (Jogo 2)", "placar": [0, 0] }
+      { "hora": "09:00hs", "equipe1": "1º Colocado", "equipe2": "Vencedor (Jogo 1)", "placar": null },
+      { "hora": "10:00hs", "equipe1": "2º Colocado", "equipe2": "Vencedor (Jogo 2)", "placar": null }
     ]
   },
 
@@ -98,8 +98,8 @@
     "data": "10/12 - Finais",
     "partidas":
     [
-      { "hora": "09:00hs", "equipe1": "Perdedor Jogo 3", "equipe2": "Perdedor Jogo 4", "placar": [0, 0] },
-      { "hora": "10:00hs", "equipe1": "Vencedor Jogo 3", "equipe2": "Vencedor Jogo 4", "placar": [0, 0] }
+      { "hora": "09:00hs", "equipe1": "Perdedor Jogo 3", "equipe2": "Perdedor Jogo 4", "placar": null },
+      { "hora": "10:00hs", "equipe1": "Vencedor Jogo 3", "equipe2": "Vencedor Jogo 4", "placar": null }
     ]
   }
 ]

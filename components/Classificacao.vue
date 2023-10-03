@@ -1,20 +1,40 @@
 <script setup lang="ts">
 import equipes from '../data/equipes.json'
+import calendario from '../data/calendario.json'
 
 const classificacao = computed(() => {
+  const partidas = calendario[0].partidas
+
   return equipes.map((equipe) => {
+    let golsFeitos = 0
+    let golsSofridos = 0
+
+    const placar1 = partidas.find(p => p.equipe1 === equipe.nome)
+    if (placar1) {
+      golsFeitos = placar1.placar[0]
+      golsSofridos = placar1.placar[1]
+    }
+
+    const placar2 = partidas.find(p => p.equipe2 === equipe.nome)
+    if (placar2) {
+      golsFeitos = placar2.placar[1]
+      golsSofridos = placar2.placar[0]
+    }
+
     return {
       equipe: equipe.nome,
-      pts: 0,
-      pj: 0,
-      vit: 0,
-      e: 0,
-      der: 0,
-      gm: 0,
-      gc: 0,
-      sg: 0,
+      pts: golsFeitos > golsSofridos ? 3 : (golsFeitos === golsSofridos ? 1 : 0),
+      pj: 1,
+      vit: golsFeitos > golsSofridos ? 1 : 0,
+      e: golsFeitos === golsSofridos ? 1 : 0,
+      der: golsFeitos < golsSofridos ? 1 : 0,
+      gm: golsFeitos,
+      gc: golsSofridos,
+      sg: golsFeitos - golsSofridos,
     }
-  }).sort((a, b) => a.pts < b.pts ? 1 : (a.pts > b.pts ? -1 : 0))
+  })
+  .sort((a, b) => a.pts < b.pts ? 1 : (a.pts > b.pts ? -1 : 0))
+  .sort((a, b) => a.sg < b.sg ? 1 : (a.sg > b.sg ? -1 : 0))
 })
 </script>
 <template>

@@ -17,7 +17,8 @@ useHead({
         <Classificacao />
         <Equipes />
         <Jogadores />
-        <Patrocinadores />
+        <Premiacao />
+        <Fotos />
       </div>
     </div>
   </div>

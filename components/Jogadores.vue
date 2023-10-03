@@ -2,7 +2,7 @@
 import jogadores from '../data/jogadores.json'
 import equipes from '../data/equipes.json'
 
-const getPlayers = () => {
+const getJogadores = () => {
   return jogadores
     .filter(jogador => jogador.equipe)
     .map(jogador => ({
@@ -10,7 +10,14 @@ const getPlayers = () => {
       equipe: equipes.find((equipe) => equipe.nome === jogador.equipe)
     }))
     .sort((a, b) => a.nome.localeCompare(b.nome))
-    .sort((a, b) => a.gols < b.gols ? 1 : (a.gols > b.gols ? -1 : 0));
+    .sort((a, b) => a.gols < b.gols ? 1 : (a.gols > b.gols ? -1 : 0))
+}
+
+const getGoleiros = () => {
+  return jogadores
+    .filter(jogador => !jogador.equipe)
+    .sort((a, b) => a.nome.localeCompare(b.nome))
+    .sort((a, b) => b.gols < a.gols ? 1 : (b.gols > a.gols ? -1 : 0))
 }
 </script>
 
@@ -19,24 +26,24 @@ const getPlayers = () => {
     <div class="divide-y">
       <h3 class="text-center text-2xl p-4">Goleiros</h3>
       <div
-        v-for="jogador in jogadores.filter(jogador => !jogador.equipe)"
+        v-for="goleiro in getGoleiros()"
         class="flex items-center justify-between gap-2 p-4"
       >
         <div class="flex flex-col">
-          <span class="uppercase">{{ jogador.nome }}</span>
-          <span class="text-sm">Posição: {{ jogador.posicao }}</span>
+          <span class="uppercase">{{ goleiro.nome }}</span>
+          <span class="text-sm">Posição: {{ goleiro.posicao }}</span>
         </div>
         <div class="flex gap-2 items-center">
-          <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6" />
-          <span class="text-lg font-semi-bold">{{ jogador.gols }}</span>
+          <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6 text-red-500" />
+          <span class="text-lg font-semi-bold">{{ goleiro.gols }}</span>
         </div>
       </div>
     </div>
-    
+
     <div class="divide-y">
       <h3 class="text-center text-2xl p-4">Jogadores de linha</h3>
       <div
-        v-for="jogador in getPlayers()"
+        v-for="jogador in getJogadores()"
         class="flex items-center justify-between gap-2 p-4"
       >
         <div class="flex items-center gap-2">
