@@ -60,9 +60,9 @@ const classificacao = computed(() => {
       sg,
     }
   })
-  .sort((a, b) => a.pts < b.pts ? 1 : (a.pts > b.pts ? -1 : 0))
   .sort((a, b) => a.gm < b.gm ? 1 : (a.gm > b.gm ? -1 : 0))
   .sort((a, b) => a.sg < b.sg ? 1 : (a.sg > b.sg ? -1 : 0))
+  .sort((a, b) => a.pts < b.pts ? 1 : (a.pts > b.pts ? -1 : 0))
 })
 </script>
 <template>
