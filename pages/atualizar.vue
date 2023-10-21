@@ -13,7 +13,7 @@ const getGols = (gols, equipe1, equipe2) => {
 const { data: partidas } = await supabase.from('partidas')
   .select('id, status, data, hora, equipe1 ( id, nome ), equipe2 ( id, nome )')
   .eq('status', 'pendente')
-  //.eq('data', `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDay()}`)
+  .eq('data', `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDay()}`)
   .order('data', { ascending: true })
   .order('hora', { ascending: true })
 
@@ -91,6 +91,8 @@ const encerrar = async () => {
     .eq('id', partidaAtual.value.id)
 
     partidaAtual.value = null
+
+    window.location.reload()
 }
 </script>
 
