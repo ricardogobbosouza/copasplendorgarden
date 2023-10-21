@@ -9,7 +9,7 @@ useHead({
 
 <template>
   <div class="bg-zinc-700 min-h-screen bg-no-repeat bg-cover bg-fixed bg-[url(/bg.jpg)]">
-    <div class="w-full h-full bg-black/30 p-4 md:p-6 lg:p-10">
+    <div class="w-full h-full bg-black/30 p-4 md:p-6 lg:p-10 min-h-screen">
       <div class="container mx-auto max-w-2xl text-white">
         <Menu />
         <Logo />

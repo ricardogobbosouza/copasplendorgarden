@@ -1,39 +1,67 @@
 <script setup lang="ts">
-import equipes from '../data/equipes.json'
-import calendario from '../data/calendario.json'
+const supabase = useSupabaseClient()
+const { data: equipes } = await supabase.from('equipes')
+  .select()
+  .order('nome', { ascending: true })
+
+const { data: partidas } = await supabase.from('partidas')
+  .select('id, status, equipe1 ( id, nome ), equipe2 ( id, nome ), gols ( id, equipe, contra )')
+  .neq('status', 'pendente')
+
+const getGols = (gols, equipe1, equipe2) => {
+  return gols.filter(gol => gol.equipe === equipe1.id).filter(gol => !gol.contra).length
+    + gols.filter(gol => gol.equipe === equipe2.id).filter(gol => gol.contra).length
+}
 
 const classificacao = computed(() => {
-  const partidas = calendario[0].partidas
-
   return equipes.map((equipe) => {
-    let golsFeitos = 0
-    let golsSofridos = 0
+    let pts = 0
+    let pj = 0
+    let vit = 0
+    let e = 0
+    let der = 0
+    let gm = 0
+    let gc = 0
+    let sg = 0
 
-    const placar1 = partidas.find(p => p.equipe1 === equipe.nome)
-    if (placar1) {
-      golsFeitos = placar1.placar[0]
-      golsSofridos = placar1.placar[1]
-    }
+    partidas.forEach(partida => {
+      const equipe1 = partida.equipe1.id === equipe.id
+      const equipe2 = partida.equipe2.id === equipe.id
 
-    const placar2 = partidas.find(p => p.equipe2 === equipe.nome)
-    if (placar2) {
-      golsFeitos = placar2.placar[1]
-      golsSofridos = placar2.placar[0]
-    }
+      if (!(equipe1 || equipe2)) {
+        return
+      }
+
+      const gols1 = getGols(partida.gols, partida.equipe1, partida.equipe2)
+      const gols2 = getGols(partida.gols, partida.equipe2, partida.equipe1)
+
+      let golsFeitos = equipe1 ? gols1 : gols2
+      let golsSofridos = equipe2 ? gols1 : gols2
+
+      pts += golsFeitos > golsSofridos ? 3 : (golsFeitos === golsSofridos ? 1 : 0),
+      pj++;
+      vit += golsFeitos > golsSofridos ? 1 : 0
+      e += golsFeitos === golsSofridos ? 1 : 0
+      der += golsFeitos < golsSofridos ? 1 : 0
+      gm += golsFeitos,
+      gc += golsSofridos,
+      sg += golsFeitos - golsSofridos
+    })
 
     return {
-      equipe: equipe.nome,
-      pts: golsFeitos > golsSofridos ? 3 : (golsFeitos === golsSofridos ? 1 : 0),
-      pj: 1,
-      vit: golsFeitos > golsSofridos ? 1 : 0,
-      e: golsFeitos === golsSofridos ? 1 : 0,
-      der: golsFeitos < golsSofridos ? 1 : 0,
-      gm: golsFeitos,
-      gc: golsSofridos,
-      sg: golsFeitos - golsSofridos,
+      equipe,
+      pts,
+      pj,
+      vit,
+      e,
+      der,
+      gm,
+      gc,
+      sg,
     }
   })
   .sort((a, b) => a.pts < b.pts ? 1 : (a.pts > b.pts ? -1 : 0))
+  .sort((a, b) => a.gm < b.gm ? 1 : (a.gm > b.gm ? -1 : 0))
   .sort((a, b) => a.sg < b.sg ? 1 : (a.sg > b.sg ? -1 : 0))
 })
 </script>
@@ -54,8 +82,8 @@ const classificacao = computed(() => {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in classificacao">
-          <td class="px-4 py-3">{{ item.equipe }}</td>
+        <tr v-for="item in classificacao" :key="item.equipe.nome">
+          <td class="px-4 py-3">{{ item.equipe.nome }}</td>
           <td class="px-4 py-3 text-center">{{ item.pts }}</td>
           <td class="px-4 py-3 text-center">{{ item.pj }}</td>
           <td class="px-4 py-3 text-center">{{ item.vit }}</td>
