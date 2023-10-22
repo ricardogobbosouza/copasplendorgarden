@@ -13,7 +13,7 @@ const getGols = (gols, equipe1, equipe2) => {
 const { data: partidas } = await supabase.from('partidas')
   .select('id, status, data, hora, equipe1 ( id, nome ), equipe2 ( id, nome )')
   .eq('status', 'pendente')
-  .eq('data', `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDay()}`)
+  .eq('data', `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}`)
   .order('data', { ascending: true })
   .order('hora', { ascending: true })
 
