@@ -39,7 +39,7 @@ const getGols = (gols, equipe1, equipe2) => {
       <div v-for="(partidas, data) in calendario" :key="data" class="py-6">
         <h3 class="text-center text-2xl font-bold italic mb-2">
           {{ data.substr(8, 2) }} / {{ data.substr(5, 2) }}
-          {{ partidas[0] && partidas[0].title ? ` - ${partidas[0].title}` : '' }}
+          {{ partidas[data] && partidas[data].title ? ` - ${partidas[0].title}` : '' }}
         </h3>
         <table class="w-full">
           <tr v-for="partida in partidas" :key="partida.id">
