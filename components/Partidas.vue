@@ -9,15 +9,6 @@ const calendario = _.groupBy(partidasRaw, 'data')
 
 const finais = [
   {
-    "data": "26/11 - Repescagem",
-    "partidas":
-    [
-      { "hora": "09:00hs", "equipe1": "3º Colocado", "equipe2": "6º Colocado", "placar": null },
-      { "hora": "10:00hs", "equipe1": "4º Colocado", "equipe2": "5º Colocado", "placar": null }
-    ]
-  },
-
-  {
     "data": "03/12 - Semi Finais",
     "partidas":
     [
@@ -48,6 +39,7 @@ const getGols = (gols, equipe1, equipe2) => {
       <div v-for="(partidas, data) in calendario" :key="data" class="py-6">
         <h3 class="text-center text-2xl font-bold italic mb-2">
           {{ data.substr(8, 2) }} / {{ data.substr(5, 2) }}
+          {{ partidas[0] && partidas[0].title ? ` - ${partidas[0].title}` : '' }}
         </h3>
         <table class="w-full">
           <tr v-for="partida in partidas" :key="partida.id">
