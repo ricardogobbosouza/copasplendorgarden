@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const supabase = useSupabaseClient()
 const { data: jogadoresRaw } = await supabase.from('jogadores')
-  .select('id, nome, posicao, numero, equipe ( id, nome, imagem ), gols ( id, contra )')
+  .select('id, nome, posicao, numero, equipe ( id, nome, imagem ), gols ( id, contra, penaltis )')
   .order('nome', { ascending: true })
   .neq('posicao', 'Goleiro')
 
@@ -11,12 +11,12 @@ const { data: goleirosRaw } = await supabase.from('jogadores')
   .eq('posicao', 'Goleiro')
 
 const { data: partidas } = await supabase.from('partidas')
-  .select('id, status, equipe1 ( id, nome ), equipe2 ( id, nome ), goleiro1 ( id, nome ), goleiro2 ( id, nome ), gols ( id, equipe, jogador, contra )')
+  .select('id, status, equipe1 ( id, nome ), equipe2 ( id, nome ), goleiro1 ( id, nome ), goleiro2 ( id, nome ), gols ( id, equipe, jogador, contra, penaltis )')
   .neq('status', 'pendente')
 
 const getGols = (gols, equipe1, equipe2) => {
-  return gols.filter(gol => gol.equipe === equipe1.id).filter(gol => !gol.contra).length
-    + gols.filter(gol => gol.equipe === equipe2.id).filter(gol => gol.contra).length
+  return gols.filter(gol => gol.equipe === equipe1.id).filter(gol => !gol.contra).filter(gol => !gol.penaltis).length
+    + gols.filter(gol => gol.equipe === equipe2.id).filter(gol => gol.contra).filter(gol => !gol.penaltis).length
 }
 
 const goleiros = computed(() => {

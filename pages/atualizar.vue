@@ -27,7 +27,7 @@ const { data: jogadores } = await supabase.from('jogadores')
   .order('nome', { ascending: true })
   .neq('posicao', 'Goleiro')
 
-const partidaAtual = ref(partidaEmAndamento)
+  const partidaAtual = ref(partidaEmAndamento)
 const partida = ref(partidas?.at(0));
 const goleiro1 = ref('');
 const goleiro2 = ref('');
@@ -53,7 +53,7 @@ const iniciarPartida = async () => {
     partidaAtual.value = data
 }
 
-const gol = async (jogador, contra = false) => {
+const gol = async (jogador, contra = false, penaltis = false) => {
   if (!partidaAtual.value || !jogador) {
     return
   }
@@ -65,13 +65,14 @@ const gol = async (jogador, contra = false) => {
       equipe: jogador.equipe.id,
       jogador: jogador.id,
       contra,
+      penaltis,
     })
 
   jogador1.value = ''
   jogador2.value = ''
 
   const { data } = await supabase.from('partidas')
-    .select('id, status, data, hora, equipe1 ( id, nome ), equipe2 ( id, nome ), gols ( id, equipe, jogador, contra )')
+    .select('id, status, data, hora, equipe1 ( id, nome ), equipe2 ( id, nome ), gols ( id, equipe, jogador, contra, penaltis )')
     .eq('status', 'em-andamento')
     .maybeSingle()
 
@@ -112,17 +113,24 @@ const encerrar = async () => {
               <div class="flex items-center gap-6">
                 <button
                   class="block w-full px-2 py-3 bg-green-500 text-white rounded-lg flex items-center justify-center gap-4"
-                  @click="gol(jogador1, false)"
+                  @click="gol(jogador1, false, false)"
                 >
                   <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6" />
                   <span>Gol</span>
                 </button>
                 <button
                   class="block w-full px-2 py-3 text-red-500 rounded-lg flex items-center justify-center gap-4"
-                  @click="gol(jogador1, true)"
+                  @click="gol(jogador1, true, false)"
                 >
                   <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6" />
-                  <span>Gol contra</span>
+                  <span>Gol (contra)</span>
+                </button>
+                <button
+                  class="block w-full px-2 py-3 rounded-lg flex items-center justify-center gap-4"
+                  @click="gol(jogador1, false, true)"
+                >
+                  <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6" />
+                  <span>Gol (Penalidades)</span>
                 </button>
               </div>
             </div>
@@ -138,17 +146,24 @@ const encerrar = async () => {
               <div class="flex items-center gap-6">
                 <button
                   class="block w-full px-2 py-3 bg-green-500 text-white rounded-lg flex items-center justify-center gap-4"
-                  @click="gol(jogador2, false)"
+                  @click="gol(jogador2, false, false)"
                 >
                   <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6" />
                   <span>Gol</span>
                 </button>
                 <button
                   class="block w-full px-2 py-3 text-red-500 rounded-lg flex items-center justify-center gap-4"
-                  @click="gol(jogador2, true)"
+                  @click="gol(jogador2, true, false)"
                 >
                   <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6" />
-                  <span>Gol contra</span>
+                  <span>Gol (Contra)</span>
+                </button>
+                <button
+                  class="block w-full px-2 py-3 rounded-lg flex items-center justify-center gap-4"
+                  @click="gol(jogador2, false, true)"
+                >
+                  <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6" />
+                  <span>Gol (Penalidades)</span>
                 </button>
               </div>
             </div>

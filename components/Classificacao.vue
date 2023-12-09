@@ -6,6 +6,7 @@ const { data: equipes } = await supabase.from('equipes')
 
 const { data: partidas } = await supabase.from('partidas')
   .select('id, status, equipe1 ( id, nome ), equipe2 ( id, nome ), gols ( id, equipe, contra )')
+  .eq('tipo', 'tabela')
   .neq('status', 'pendente')
 
 const getGols = (gols, equipe1, equipe2) => {
@@ -70,6 +71,7 @@ const classificacao = computed(() => {
     <table class="w-full">
       <thead>
         <tr>
+          <th class="px-4 py-3 bg-zinc-100 text-center font-semibold"></th>
           <th class="px-4 py-3 bg-zinc-100 text-left font-semibold">Equipes</th>
           <th class="px-4 py-3 bg-zinc-100 text-center font-semibold">Pts</th>
           <th class="px-4 py-3 bg-zinc-100 text-center font-semibold">PJ</th>
@@ -82,7 +84,13 @@ const classificacao = computed(() => {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in classificacao" :key="item.equipe.nome">
+        <tr
+          v-for="(item, index) in classificacao" :key="item.equipe.nome"
+          :class="{
+            'bg-green-100': index < 2,
+            'bg-blue-100': index > 1 && index < 6
+          }">
+          <td class="px-4 py-3 text-center">{{ index + 1 }}º</td>
           <td class="px-4 py-3">{{ item.equipe.nome }}</td>
           <td class="px-4 py-3 text-center">{{ item.pts }}</td>
           <td class="px-4 py-3 text-center">{{ item.pj }}</td>

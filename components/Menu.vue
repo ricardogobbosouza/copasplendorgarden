@@ -39,9 +39,9 @@
       </a>
     </li>
     <li>
-      <a class="text-center font-light hover:underline tracking-widest px-1 md:px2 lg:px-6 py-2 flex items-center justify-center gap-2" href="#fotos">
+      <a class="text-center font-light hover:underline tracking-widest px-1 md:px2 lg:px-6 py-2 flex items-center justify-center gap-2" href="#fotos-e-videos">
         <Icon name="mdi:camera-outline" />
-        <span class="text-xs lg:text-base">Fotos</span>
+        <span class="text-xs lg:text-base">Fotos e Vídeos</span>
       </a>
     </li>
   </ul>

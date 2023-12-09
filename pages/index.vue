@@ -13,12 +13,14 @@ useHead({
       <div class="container mx-auto max-w-2xl text-white">
         <Menu />
         <Logo />
+        <Campeao />
+        <Partidas />
         <Partidas />
         <Classificacao />
         <Equipes />
         <Jogadores />
         <Premiacao />
-        <Fotos />
+        <FotosVideos />
       </div>
     </div>
   </div>
