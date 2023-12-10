@@ -49,26 +49,26 @@ const perdedor = (partida) => {
   <div id="campeao" v-if="partida1e2 && partida3e4">
     <div class="flex items-end justify-center gap-1">
       <div>
-        <div class="bg-white rounded-full h-40 w-40 flex items-center justify-center">
-          <img v-if="partida1e2.status === 'encerrada'" :src="perdedor(partida1e2).imagem" :alt="perdedor(partida1e2).nome" class="w-28 h-28 object-contain" />
-          <img v-if="partida1e2.status !== 'encerrada'" :src="partida1e2.equipe1.imagem" :alt="partida1e2.equipe1.nome" class="w-16 h-16 object-contain" />
-          <img v-if="partida1e2.status !== 'encerrada'" :src="partida1e2.equipe2.imagem" :alt="partida1e2.equipe2.nome" class="w-16 h-16 object-contain" />
+        <div class="bg-white rounded-full h-28 w-28 md:w-40 md:h-40 flex items-center justify-center">
+          <img v-if="partida1e2.status === 'encerrada'" :src="perdedor(partida1e2).imagem" :alt="perdedor(partida1e2).nome" class="h-12 w-12 md:w-16 md:h-16 object-contain" />
+          <img v-if="partida1e2.status !== 'encerrada'" :src="partida1e2.equipe1.imagem" :alt="partida1e2.equipe1.nome" class="h-12 w-12 md:w-16 md:h-16 object-contain" />
+          <img v-if="partida1e2.status !== 'encerrada'" :src="partida1e2.equipe2.imagem" :alt="partida1e2.equipe2.nome" class="h-12 w-12 md:w-16 md:h-16 object-contain" />
         </div>
         <div class="text-center text-4xl m-1">2º</div>
       </div>
       <div>
-        <div class="bg-white rounded-full h-40 w-40 flex items-center justify-center">
-          <img v-if="partida1e2.status === 'encerrada'" :src="vencedor(partida1e2).imagem" :alt="vencedor(partida1e2).nome" class="w-28 h-28 object-contain" />
-          <img v-if="partida1e2.status !== 'encerrada'" :src="partida1e2.equipe1.imagem" :alt="partida1e2.equipe1.nome" class="w-16 h-16 object-contain" />
-          <img v-if="partida1e2.status !== 'encerrada'" :src="partida1e2.equipe2.imagem" :alt="partida1e2.equipe2.nome" class="w-16 h-16 object-contain" />
+        <div class="bg-white rounded-full h-28 w-28 md:w-40 md:h-40 flex items-center justify-center">
+          <img v-if="partida1e2.status === 'encerrada'" :src="vencedor(partida1e2).imagem" :alt="vencedor(partida1e2).nome" class="h-12 w-12 md:w-16 md:h-16 object-contain" />
+          <img v-if="partida1e2.status !== 'encerrada'" :src="partida1e2.equipe1.imagem" :alt="partida1e2.equipe1.nome" class="h-12 w-12 md:w-16 md:h-16 object-contain" />
+          <img v-if="partida1e2.status !== 'encerrada'" :src="partida1e2.equipe2.imagem" :alt="partida1e2.equipe2.nome" class="h-12 w-12 md:w-16 md:h-16 object-contain" />
         </div>
         <div class="text-center text-6xl m-1 h-20">1º</div>
       </div>
       <div>
-        <div class="bg-white rounded-full h-40 w-40 flex items-center justify-center">
-          <img v-if="partida3e4.status === 'encerrada'" :src="vencedor(partida3e4).imagem" :alt="vencedor(partida3e4).nome" class="w-28 h-28 object-contain" />
-          <img v-if="partida3e4.status !== 'encerrada'" :src="partida3e4.equipe1.imagem" :alt="partida3e4.equipe1.nome" class="w-16 h-16 object-contain" />
-          <img v-if="partida3e4.status !== 'encerrada'" :src="partida3e4.equipe2.imagem" :alt="partida3e4.equipe2.nome" class="w-16 h-16 object-contain" />
+        <div class="bg-white rounded-full h-28 w-28 md:w-40 md:h-40 flex items-center justify-center">
+          <img v-if="partida3e4.status === 'encerrada'" :src="vencedor(partida3e4).imagem" :alt="vencedor(partida3e4).nome" class="h-12 w-12 md:w-16 md:h-16 object-contain" />
+          <img v-if="partida3e4.status !== 'encerrada'" :src="partida3e4.equipe1.imagem" :alt="partida3e4.equipe1.nome" class="h-12 w-12 md:w-16 md:h-16 object-contain" />
+          <img v-if="partida3e4.status !== 'encerrada'" :src="partida3e4.equipe2.imagem" :alt="partida3e4.equipe2.nome" class="h-12 w-12 md:w-16 md:h-16 object-contain" />
         </div>
         <div class="text-center text-2xl m-1">3º</div>
       </div>
