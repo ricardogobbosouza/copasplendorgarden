@@ -15,7 +15,6 @@ useHead({
         <Logo />
         <Campeao />
         <Partidas />
-        <Partidas />
         <Classificacao />
         <Equipes />
         <Jogadores />
