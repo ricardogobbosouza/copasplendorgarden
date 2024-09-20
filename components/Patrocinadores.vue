@@ -6,7 +6,7 @@
         <img class="rounded-xl" src="/patrocinadores/dumitcar.jpg" alt="Dumit car" />
         <div class="flex justify-between gap-6">
           <img class="max-w-24 rounded-xl" src="/patrocinadores/flashgames.jpg" alt="Flash games" />
-          <img class="max-w-24 rounded-xl" src="/patrocinadores/flashgames.jpg" alt="Flash games" />
+          <img class="max-w-24 rounded-xl" src="/patrocinadores/vale-diesel.jpg" alt="Vale diesel" />
         </div>
       </div>
     </div>
