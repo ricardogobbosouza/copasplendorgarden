@@ -121,6 +121,7 @@ const onChangeFoto = (e: Event) => {
                             <option value="Atacante">Atacante</option>
                             <option value="Meio campo">Meio campo</option>
                             <option value="Zagueiro">Zagueiro</option>
+                            <option value="Goleiro">Goleiro</option>
                         </select>
                     </label>
                     <label class="block mb-6">
