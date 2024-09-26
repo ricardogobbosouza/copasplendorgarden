@@ -11,7 +11,6 @@ const { data: inscricoes } = await supabase.from('jogadores')
   .order('nome', { ascending: true })
   .neq('posicao', 'Goleiro')
   .eq('campeonato', campeonato.id)
-  .limit(1)
 </script>
 
 <template>

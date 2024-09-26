@@ -1,6 +1,6 @@
 import { serverSupabaseClient } from '#supabase/server'
 
-export default defineCachedEventHandler(async (event) => {
+export default defineEventHandler(async (event) => {
   const supabase = await serverSupabaseClient(event)
 
   const { data } = await supabase.from('jogadores')
@@ -9,5 +9,7 @@ export default defineCachedEventHandler(async (event) => {
     .limit(1)
     .maybeSingle()
   
-  return Buffer.from(data.foto)
+  if (data) {
+    return data.foto
+  }
 })
