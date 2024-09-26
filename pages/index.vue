@@ -9,9 +9,14 @@ const { data: campeonato } = await supabase.from('campeonatos')
 if (campeonato.status === 'inscricao') {
   await navigateTo('/cadastre-se')
 }
+
+if (campeonato.status === 'inscricoes') {
+  await navigateTo('/inscricoes')
+}
 </script>
 
 <template>
+  <Jogadores />
   <Menu />
   <Logo />
   <Campeao />

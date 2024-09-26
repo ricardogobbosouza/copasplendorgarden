@@ -6,6 +6,10 @@ const { data: campeonato } = await supabase.from('campeonatos')
   .limit(1)
   .maybeSingle()
 
+if (campeonato.status !== 'inscricao') {
+    await navigateTo('/')
+}
+
 const form = reactive({
     nome: null,
     telefone: null,
