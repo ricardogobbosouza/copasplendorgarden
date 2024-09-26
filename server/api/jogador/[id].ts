@@ -1,6 +1,6 @@
 import { serverSupabaseClient } from '#supabase/server'
 
-export default defineEventHandler(async (event) => {
+export default defineCachedEventHandler(async (event) => {
   const supabase = await serverSupabaseClient(event)
 
   const { data } = await supabase.from('jogadores')
@@ -9,7 +9,5 @@ export default defineEventHandler(async (event) => {
     .limit(1)
     .maybeSingle()
   
-  //event.node.res.setHeader("Content-Type", "image/jpg")
-
-  return data.foto
+  return Buffer.from(data.foto)
 })

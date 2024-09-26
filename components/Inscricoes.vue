@@ -11,6 +11,7 @@ const { data: inscricoes } = await supabase.from('jogadores')
   .order('nome', { ascending: true })
   .neq('posicao', 'Goleiro')
   .eq('campeonato', campeonato.id)
+  .limit(1)
 </script>
 
 <template>
@@ -21,10 +22,10 @@ const { data: inscricoes } = await supabase.from('jogadores')
         :key="inscricao.id"
         class="flex items-center gap-2 p-4"
       >
-        <div class="flex-1 flex items-center gap-2">
-          <img
+        <div class="flex-1 flex items-center gap-4">
+          <Foto
             class="w-12 h-12 object-contain"
-            :src="`/api/jogador/${inscricao.id}`"
+            :id="inscricao.id"
           />
           <div class="flex flex-col">
             <span class="uppercase">{{ inscricao.nome }}</span>
