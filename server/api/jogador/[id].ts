@@ -1,6 +1,6 @@
 import { serverSupabaseClient } from '#supabase/server'
 
-export default defineEventHandler(async (event) => {
+export default defineCachedEventHandler(async (event) => {
   const supabase = await serverSupabaseClient(event)
 
   const { data } = await supabase.from('jogadores')
@@ -12,4 +12,4 @@ export default defineEventHandler(async (event) => {
   if (data) {
     return data.foto
   }
-})
+}, { maxAge: 60 * 60 * 24 })
