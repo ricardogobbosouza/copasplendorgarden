@@ -14,7 +14,7 @@ const { data: inscricoes } = await supabase.from('jogadores')
 </script>
 
 <template>
-  <Box id="inscricioes" :title="`Inscrições - Total: ${inscricoes.length}`">
+  <Box id="inscricioes" :title="`Inscrições Encerradas - Total: ${inscricoes.length}`">
     <div class="divide-y">
       <div
         v-for="inscricao in inscricoes"
@@ -22,10 +22,12 @@ const { data: inscricoes } = await supabase.from('jogadores')
         class="flex items-center gap-2 p-4"
       >
         <div class="flex-1 flex items-center gap-4">
-          <Foto
-            class="w-12 h-12 object-contain"
-            :id="inscricao.id"
-          />
+          <ClientOnly>
+            <Foto
+              class="w-12 h-12 object-contain"
+              :id="inscricao.id"
+            />
+          </ClientOnly>
           <div class="flex flex-col">
             <span class="uppercase">{{ inscricao.nome }}</span>
             <span class="text-sm">Posição: {{ inscricao.posicao }}</span>
