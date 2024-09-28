@@ -1,18 +1,26 @@
 <script lang="ts" setup>
 const supabase = useSupabaseClient()
+const { data: campeonato } = await supabase.from('campeonatos')
+  .select('id, nome, status')
+  .order('id', { ascending: false })
+  .limit(1)
+  .maybeSingle()
 const { data: jogadoresRaw } = await supabase.from('jogadores')
   .select('id, nome, posicao, numero, equipe ( id, nome, imagem ), gols ( id, contra, penaltis )')
   .order('nome', { ascending: true })
+  .eq('campeonato', campeonato.id)
   .neq('posicao', 'Goleiro')
 
 const { data: goleirosRaw } = await supabase.from('jogadores')
   .select('id, nome')
   .order('nome', { ascending: true })
+  .eq('campeonato', campeonato.id)
   .eq('posicao', 'Goleiro')
 
 const { data: partidas } = await supabase.from('partidas')
   .select('id, status, equipe1 ( id, nome ), equipe2 ( id, nome ), goleiro1 ( id, nome ), goleiro2 ( id, nome ), gols ( id, equipe, jogador, contra, penaltis )')
   .neq('status', 'pendente')
+  .eq('campeonato', campeonato.id)
 
 const getGols = (gols, equipe1, equipe2) => {
   return gols.filter(gol => gol.equipe === equipe1.id).filter(gol => !gol.contra).filter(gol => !gol.penaltis).length

@@ -16,14 +16,13 @@ if (campeonato.status === 'inscricoes') {
 </script>
 
 <template>
-  <Jogadores />
   <Menu />
   <Logo />
-  <Campeao />
+  <!--<Campeao />
   <Partidas />
-  <Classificacao />
+  <Classificacao />-->
   <Equipes />
   <Jogadores />
-  <Premiacao />
-  <FotosVideos />
+  <!--<Premiacao />
+  <FotosVideos />-->
 </template>

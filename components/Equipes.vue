@@ -1,7 +1,13 @@
 <script lang="ts" setup>
 const supabase = useSupabaseClient()
+const { data: campeonato } = await supabase.from('campeonatos')
+  .select('id, nome, status')
+  .order('id', { ascending: false })
+  .limit(1)
+  .maybeSingle()
 const { data: equipes } = await supabase.from('equipes')
   .select()
+  .eq('campeonato', campeonato.id)
   .order('nome', { ascending: true })
 </script>
 
