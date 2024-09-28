@@ -92,7 +92,7 @@ const jogadores = computed(() => {
     </div>
 
     <div v-for="equipe in equipes" :key="equipe.id" class="p-6">
-      <div class="flex items-center gap-2 border-b">
+      <div class="flex items-center justify-center gap-2 border-b p-4">
         <img class="w-12 h-12 object-contain" :src="equipe.imagem" />
         <span class="text-center text-2xl">{{ equipe.nome }}</span>
       </div>
