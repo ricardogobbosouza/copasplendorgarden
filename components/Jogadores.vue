@@ -91,39 +91,36 @@ const jogadores = computed(() => {
       </div>
     </div>
 
-    <div class="divide-y">
-      <h3 class="text-center text-2xl p-4">Jogadores</h3>
-      <div v-for="equipe in equipes" :key="equipe.id" class="p-6">
-        <div class="flex items-center gap-2">
-          <img class="w-12 h-12 object-contain" :src="equipe.imagem" />
-          <span>{{ equipe.nome }}</span>
+    <div v-for="equipe in equipes" :key="equipe.id" class="p-6">
+      <div class="flex items-center gap-2 border-b">
+        <img class="w-12 h-12 object-contain" :src="equipe.imagem" />
+        <span class="text-center text-2xl">{{ equipe.nome }}</span>
+      </div>
+      <div
+        v-for="jogador in jogadores.filter(jogador => jogador.equipe.id === equipe.id)"
+        :key="jogador.id"
+        class="flex items-center gap-2 p-4"
+      >
+        <div class="flex-1 flex items-center gap-2">
+          <ClientOnly>
+            <Foto
+              class="w-12 h-12 object-contain"
+              :id="jogador.id"
+            />
+          </ClientOnly>
+          <div class="flex flex-col">
+            <span class="uppercase">{{ jogador.nome }}</span>
+            <span class="text-sm">Posição: {{ jogador.posicao }}</span>
+            <span class="text-sm">Número: {{ jogador.numero }}</span>
+          </div>
         </div>
-        <div
-          v-for="jogador in jogadores"
-          :key="jogador.id"
-          class="flex items-center gap-2 p-4"
-        >
-          <div v-if="jogador.equipe.id === equipe.id" class="flex-1 flex items-center gap-2">
-            <ClientOnly>
-              <Foto
-                class="w-12 h-12 object-contain"
-                :id="jogador.id"
-              />
-            </ClientOnly>
-            <div class="flex flex-col">
-              <span class="uppercase">{{ jogador.nome }}</span>
-              <span class="text-sm">Posição: {{ jogador.posicao }}</span>
-              <span class="text-sm">Número: {{ jogador.numero }}</span>
-            </div>
-          </div>
-          <div class="flex gap-2 items-center">
-            <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6" />
-            <span class="text-lg font-semi-bold">{{ jogador.gols }}</span>
-          </div>
-          <div class="flex gap-2 items-center">
-            <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6 text-red-500" />
-            <span class="text-lg font-semi-bold">{{ jogador.golsContra }}</span>
-          </div>
+        <div class="flex gap-2 items-center">
+          <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6" />
+          <span class="text-lg font-semi-bold">{{ jogador.gols }}</span>
+        </div>
+        <div class="flex gap-2 items-center">
+          <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6 text-red-500" />
+          <span class="text-lg font-semi-bold">{{ jogador.golsContra }}</span>
         </div>
       </div>
     </div>
