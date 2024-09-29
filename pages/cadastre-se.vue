@@ -152,7 +152,7 @@ const onChangeFoto = (e: Event) => {
         <Box title="Preferências">
             <div class="p-4">
                 <p class="mb-6">
-                    Selecione suas preferências abaixo. 
+                    Selecione suas preferências abaixo.
                     Gostaríamos de conhecer suas preferências para definir a taxa de inscrição mais adequada para todos.
                 </p>
 
@@ -218,21 +218,21 @@ const onChangeFoto = (e: Event) => {
                 <label class="flex items-center gap-2 mb-4">
                     <input required v-model="form.termos" type="checkbox" value="1" name="termos" class="border rounded border-gray-300 scale-125" />
                     <span>
-                        Li e aceito o termos descritos no 
-                        <a class="text-blue-500 underline" target="_blank" href="/regulamento-6-copasplendorgarden.pdf">regulamento</a>
+                        Li e aceito o termos descritos no
+                        <a class="text-blue-500 underline" target="_blank" href="/regulamento-6.pdf">regulamento</a>
                     </span>
                 </label>
 
-                <button 
+                <button
                     v-if="!loading"
                     :disabled="!form.termos"
-                    type="submit" 
+                    type="submit"
                     class="w-full bg-blue-500 text-white px-3 py-4 rounded text-lg shadow flex items-center justify-center gap-2 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-gray-400"
                 >
                     <Icon name="mdi:check" />
                     Enviar
                 </button>
-                <span 
+                <span
                     v-else
                     class="w-full bg-blue-500 text-white px-3 py-4 rounded text-lg shadow flex items-center justify-center gap-2"
                 >

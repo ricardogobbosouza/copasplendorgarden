@@ -33,7 +33,7 @@
       </a>
     </li>
     <li>
-      <a class="text-center font-light hover:underline tracking-widest px-1 md:px2 lg:px-6 py-2 flex items-center justify-center gap-2" href="/regulamento.docx" target="_blank">
+      <a class="text-center font-light hover:underline tracking-widest px-1 md:px2 lg:px-6 py-2 flex items-center justify-center gap-2" href="/regulamento-6.pdf" target="_blank">
         <Icon name="mdi:file-document-outline" />
         <span class="text-xs lg:text-base">Regulamento</span>
       </a>
