@@ -1,13 +1,6 @@
 <script setup lang="ts">
-const supabase = useSupabaseClient()
-const { data: campeonato } = await supabase.from('campeonatos')
-  .select('id, nome, status')
-  .order('id', { ascending: false })
-  .limit(1)
-  .maybeSingle()
-
-const fotos = import.meta.glob(`@/public/${campeonato.id}/fotos/*.jpeg`)
-const videos = import.meta.glob(`@/public/${campeonato.id}/videos/*.mp4`)
+const fotos = import.meta.glob('@/public/6/fotos/*.jpeg')
+const videos = import.meta.glob('@/public/6/videos/*.mp4')
 </script>
 
 <template>
