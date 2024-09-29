@@ -114,13 +114,15 @@ const jogadores = computed(() => {
             <span class="text-sm">Número: {{ jogador.numero }}</span>
           </div>
         </div>
-        <div class="flex gap-2 items-center">
-          <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6" />
-          <span class="text-lg font-semi-bold">{{ jogador.gols }}</span>
-        </div>
-        <div class="flex gap-2 items-center">
-          <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6 text-red-500" />
-          <span class="text-lg font-semi-bold">{{ jogador.golsContra }}</span>
+        <div class="flex flex-col gap-2 items-center">
+          <div class="flex gap-2 items-center">
+            <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6" />
+            <span class="text-lg font-semi-bold">{{ jogador.gols }}</span>
+          </div>
+          <div class="flex gap-2 items-center">
+            <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6 text-red-500" />
+            <span class="text-lg font-semi-bold">{{ jogador.golsContra }}</span>
+          </div>
         </div>
       </div>
     </div>
