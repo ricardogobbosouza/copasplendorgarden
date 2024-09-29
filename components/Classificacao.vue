@@ -94,8 +94,8 @@ const classificacao = computed(() => {
         <tr
           v-for="(item, index) in classificacao" :key="item.equipe.nome"
           :class="{
-            //'bg-green-100': index < 2,
-            'bg-blue-100': index > 1 && index < 4
+            'bg-green-100': index < 4,
+            //'bg-blue-100': index > 1 && index < 6
           }">
           <td class="px-4 py-3 text-center">{{ index + 1 }}º</td>
           <td class="px-4 py-3">{{ item.equipe.nome }}</td>
