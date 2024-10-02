@@ -8,7 +8,7 @@ const { data: campeonato } = await supabase.from('campeonatos')
   .maybeSingle()
 
 const { data: partidasRaw } = await supabase.from('partidas')
-  .select('id, status, title, data, hora, equipe1 ( id, nome ), equipe2 ( id, nome ), gols ( id, equipe, contra, penaltis )')
+  .select('id, status, title, data, hora, tipo, equipe1 ( id, nome ), equipe2 ( id, nome ), gols ( id, equipe, contra, penaltis )')
   .eq('campeonato', campeonato.id)
   .order('data', { ascending: true })
   .order('hora', { ascending: true })
@@ -20,23 +20,23 @@ const getGols = (gols, equipe1, equipe2, penaltis) => {
 }
 
 const equipe1Nome = (partida) => {
-  if (partida.equipe) {
+  if (partida.equipe1) {
     return partida.equipe1.nome
   }
 
-  if (partida.tipo === 'semifinal-1-4') {
+  if (partida.tipo === 'semifinal-1x4') {
     return '1º colocado'
   }
 
-  if (partida.tipo === 'semifinal-2-3') {
+  if (partida.tipo === 'semifinal-2x3') {
     return '2º colocado'
   }
 
-  if (partida.tipo === 'final-1-2') {
+  if (partida.tipo === 'final-1x2') {
     return 'Vencedor da semifinal 1'
   }
 
-  if (partida.tipo === 'final-3-4') {
+  if (partida.tipo === 'final-3x4') {
     return 'Perdedor da semifinal 1'
   }
 
@@ -44,23 +44,23 @@ const equipe1Nome = (partida) => {
 }
 
 const equipe2Nome = (partida) => {
-  if (partida.equipe) {
+  if (partida.equipe2) {
     return partida.equipe2.nome
   }
 
-  if (partida.tipo === 'semifinal-1-4') {
+  if (partida.tipo === 'semifinal-1x4') {
     return '4º colocado'
   }
 
-  if (partida.tipo === 'semifinal-2-3') {
+  if (partida.tipo === 'semifinal-2x3') {
     return '3º colocado'
   }
 
-  if (partida.tipo === 'final-1-2') {
+  if (partida.tipo === 'final-1x2') {
     return 'Vencedor da semifinal 2'
   }
 
-  if (partida.tipo === 'final-3-4') {
+  if (partida.tipo === 'final-3x4') {
     return 'Perdedor da semifinal 2'
   }
 
