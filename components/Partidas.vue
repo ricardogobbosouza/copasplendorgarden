@@ -1,8 +1,15 @@
 <script lang="ts" setup>
 import _ from 'lodash'
 const supabase = useSupabaseClient()
+const { data: campeonato } = await supabase.from('campeonatos')
+  .select('id, nome, status')
+  .order('id', { ascending: false })
+  .limit(1)
+  .maybeSingle()
+
 const { data: partidasRaw } = await supabase.from('partidas')
   .select('id, status, title, data, hora, equipe1 ( id, nome ), equipe2 ( id, nome ), gols ( id, equipe, contra, penaltis )')
+  .eq('campeonato', campeonato.id)
   .order('data', { ascending: true })
   .order('hora', { ascending: true })
 const calendario = _.groupBy(partidasRaw, 'data')
