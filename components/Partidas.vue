@@ -18,6 +18,54 @@ const getGols = (gols, equipe1, equipe2, penaltis) => {
   return gols.filter(gol => gol.equipe === equipe1.id).filter(gol => !gol.contra).filter(gol => gol.penaltis === penaltis).length
     + gols.filter(gol => gol.equipe === equipe2.id).filter(gol => gol.contra).filter(gol => gol.penaltis == penaltis).length
 }
+
+const equipe1Nome = (partida) => {
+  if (partida.equipe) {
+    return partida.equipe1.nome
+  }
+
+  if (partida.tipo === 'semifinal-1-4') {
+    return '1º colocado'
+  }
+
+  if (partida.tipo === 'semifinal-2-3') {
+    return '2º colocado'
+  }
+
+  if (partida.tipo === 'final-1-2') {
+    return 'Vencedor da semifinal 1'
+  }
+
+  if (partida.tipo === 'final-3-4') {
+    return 'Perdedor da semifinal 1'
+  }
+
+  return '---'
+}
+
+const equipe2Nome = (partida) => {
+  if (partida.equipe) {
+    return partida.equipe2.nome
+  }
+
+  if (partida.tipo === 'semifinal-1-4') {
+    return '4º colocado'
+  }
+
+  if (partida.tipo === 'semifinal-2-3') {
+    return '3º colocado'
+  }
+
+  if (partida.tipo === 'final-1-2') {
+    return 'Vencedor da semifinal 2'
+  }
+
+  if (partida.tipo === 'final-3-4') {
+    return 'Perdedor da semifinal 2'
+  }
+
+  return '---'
+}
 </script>
 
 <template>
@@ -31,7 +79,7 @@ const getGols = (gols, equipe1, equipe2, penaltis) => {
         <table class="w-full">
           <tr v-for="partida in partidas" :key="partida.id">
             <td class="px-1 py-2 md:x-4 md:py-3 text-sm md:text-base">{{ partida.hora.substr(0, 5) }}</td>
-            <td class="px-1 py-2 md:px-4 md:py-3 text-sm md:text-xl text-right">{{ partida.equipe1.nome }}</td>
+            <td class="px-1 py-2 md:px-4 md:py-3 text-sm md:text-xl text-right">{{ equipe1Nome(partida) }}</td>
             <td class="px-1 py-2 md:px-4 md:py-3 font-bold text-sm md:text-lg text-center">
               <div v-if="partida.status !== 'pendente'">
                 {{ getGols(partida.gols, partida.equipe1, partida.equipe2, false) }}
@@ -47,7 +95,7 @@ const getGols = (gols, equipe1, equipe2, penaltis) => {
                 {{ getGols(partida.gols, partida.equipe2, partida.equipe1, true) }}
               </di>
             </td>
-            <td class="px-1 py-2 md:px-4 md:py-3 text-sm md:text-xl">{{ partida.equipe2.nome }}</td>
+            <td class="px-1 py-2 md:px-4 md:py-3 text-sm md:text-xl">{{ equipe2Nome(partida) }}</td>
           </tr>
         </table>
       </div>
