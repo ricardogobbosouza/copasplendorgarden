@@ -11,5 +11,11 @@ export default defineNuxtConfig({
     redirect: false
   },
 
-  compatibilityDate: '2024-09-26'
+  compatibilityDate: '2024-09-26',
+
+  nitro: {
+    prerender: {
+      routes: ["/", "/atualizar"],
+    },
+  },
 })
