@@ -25,4 +25,5 @@ if (campeonato.status === 'inscricoes') {
   <Jogadores />
   <Premiacao />
   <FotosVideos />
+  <Patrocinadores />
 </template>
