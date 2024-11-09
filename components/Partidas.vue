@@ -7,7 +7,7 @@ const { data: campeonato } = await supabase.from('campeonatos')
   .limit(1)
   .maybeSingle()
 
-const { data: partidasRaw } = await supabase.from('partidas')
+  const { data: partidasRaw } = await supabase.from('partidas')
   .select('id, status, title, data, hora, tipo, equipe1 ( id, nome ), equipe2 ( id, nome ), gols ( id, equipe, contra, penaltis )')
   .eq('campeonato', campeonato.id)
   .order('data', { ascending: true })
@@ -89,11 +89,11 @@ const equipe2Nome = (partida) => {
               <div v-else>
                 -
               </div>
-              <di class="text-xs" v-if="getGols(partida.gols, partida.equipe1, partida.equipe2, true) || getGols(partida.gols, partida.equipe2, partida.equipe1, true)">
+              <div class="text-xs" v-if="getGols(partida.gols, partida.equipe1, partida.equipe2, true) || getGols(partida.gols, partida.equipe2, partida.equipe1, true)">
                 {{ getGols(partida.gols, partida.equipe1, partida.equipe2, true) }}
                 x
                 {{ getGols(partida.gols, partida.equipe2, partida.equipe1, true) }}
-              </di>
+              </div>
             </td>
             <td class="px-1 py-2 md:px-4 md:py-3 text-sm md:text-xl">{{ equipe2Nome(partida) }}</td>
           </tr>
