@@ -1,8 +1,15 @@
 <script lang="ts" setup>
 const supabase = useSupabaseClient()
+const { data: campeonato } = await supabase.from('campeonatos')
+  .select('id, nome, status')
+  .order('id', { ascending: false })
+  .limit(1)
+  .maybeSingle()
+
 const { data: partidaEmAndamento } = await supabase.from('partidas')
   .select('id, status, data, hora, equipe1 ( id, nome ), equipe2 ( id, nome ), gols ( id, equipe, jogador, contra )')
   .eq('status', 'em-andamento')
+  .eq('campeonato', campeonato.id)
   .maybeSingle()
 
 const getGols = (gols, equipe1, equipe2) => {
@@ -13,6 +20,7 @@ const getGols = (gols, equipe1, equipe2) => {
 const { data: partidas } = await supabase.from('partidas')
   .select('id, status, data, hora, equipe1 ( id, nome ), equipe2 ( id, nome )')
   .eq('status', 'pendente')
+  .eq('campeonato', campeonato.id)
   .eq('data', `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}`)
   .order('data', { ascending: true })
   .order('hora', { ascending: true })
@@ -20,14 +28,16 @@ const { data: partidas } = await supabase.from('partidas')
 const { data: goleiros } = await supabase.from('jogadores')
   .select('id, nome')
   .order('nome', { ascending: true })
+  .eq('campeonato', campeonato.id)
   .eq('posicao', 'Goleiro')
 
 const { data: jogadores } = await supabase.from('jogadores')
   .select('id, nome, posicao, numero, equipe ( id, nome, imagem )')
   .order('nome', { ascending: true })
+  .eq('campeonato', campeonato.id)
   .neq('posicao', 'Goleiro')
 
-  const partidaAtual = ref(partidaEmAndamento)
+const partidaAtual = ref(partidaEmAndamento)
 const partida = ref(partidas?.at(0));
 const goleiro1 = ref('');
 const goleiro2 = ref('');
