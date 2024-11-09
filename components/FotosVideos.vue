@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const fotos = import.meta.glob('@/public/6/fotos/*.jpeg')
-const videos = import.meta.glob('@/public/6/videos/*.mp4')
+const fotos = import.meta.glob('@/public/fotos/6/*.jpeg')
+const videos = import.meta.glob('@/public/videos/6/*.mp4')
 </script>
 
 <template>
