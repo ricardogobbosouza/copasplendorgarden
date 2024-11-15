@@ -35,8 +35,8 @@ const getGols = (gols, equipe1, equipe2) => {
 
 const goleiros = computed(() => {
   return goleirosRaw?.map((goleiro) => {
-    const partida1 = partidas?.filter(p => p.goleiro1.id === goleiro.id) || []
-    const partida2 = partidas?.filter(p => p.goleiro2.id === goleiro.id) || []
+    const partida1 = partidas?.filter(p => p.goleiro1?.id === goleiro.id) || []
+    const partida2 = partidas?.filter(p => p.goleiro2?.id === goleiro.id) || []
     let golsSofridos = 0
 
     partida1.forEach((partida) => {
