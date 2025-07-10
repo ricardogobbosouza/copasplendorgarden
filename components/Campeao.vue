@@ -1,14 +1,22 @@
 <script lang="ts" setup>
 const supabase = useSupabaseClient()
 
+const { data: campeonato } = await supabase.from('campeonatos')
+  .select('id, nome, status')
+  .order('id', { ascending: false })
+  .limit(1)
+  .maybeSingle()
+
 const { data: partida1e2 } = await supabase.from('partidas')
   .select('id, status, equipe1 ( id, nome, imagem ), equipe2 ( id, nome, imagem ), gols ( id, equipe, contra, penaltis )')
-  .eq('tipo', 'final-1-e-2')
+  .eq('campeonato', campeonato.id)
+  .eq('tipo', 'final-1x2')
   .maybeSingle()
 
 const { data: partida3e4 } = await supabase.from('partidas')
   .select('id, status, equipe1 ( id, nome, imagem ), equipe2 ( id, nome, imagem ), gols ( id, equipe, contra, penaltis )')
-  .eq('tipo', 'final-3-e-4')
+  .eq('campeonato', campeonato.id)
+  .eq('tipo', 'final-3x4')
   .maybeSingle()
 
 const getGols = (gols, equipe1, equipe2, penaltis) => {
@@ -43,6 +51,19 @@ const perdedor = (partida) => {
     ? partida.equipe2
     : partida.equipe1
 }
+
+const { data: jogadores } = await supabase.from('jogadores')
+  .select('id, nome, posicao, numero, equipe ( id, nome, imagem ), gols ( id, contra, penaltis )')
+  .eq('campeonato', campeonato.id)
+  .neq('posicao', 'Goleiro')
+
+const jogadoresComGols = jogadores.map(jogador => ({
+  ...jogador,
+  gols: jogador.gols.filter(gol => !gol.contra).length,
+}));
+
+const maxGols = Math.max(...jogadoresComGols.map(jogador => jogador.gols));
+const artilheiros = jogadoresComGols.filter(jogador => jogador.gols === maxGols);
 </script>
 
 <template>
@@ -73,5 +94,33 @@ const perdedor = (partida) => {
         <div class="text-center text-2xl m-1">3º</div>
       </div>
     </div>
+    
+     <Box title="Artilheiro">
+      <div
+        v-for="jogador in artilheiros"
+        :key="jogador.id"
+        class="flex items-center gap-2 p-4"
+      >
+        <div class="flex-1 flex items-center gap-2">
+          <ClientOnly>
+            <Foto
+              class="w-12 h-12 object-contain"
+              :id="jogador.id"
+            />
+          </ClientOnly>
+          <div class="flex flex-col">
+            <span class="uppercase">{{ jogador.nome }}</span>
+            <span class="text-sm">Posição: {{ jogador.posicao }}</span>
+            <span class="text-sm">Número: {{ jogador.numero }}</span>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2 items-center">
+          <div class="flex gap-2 items-center">
+            <Icon name="emojione-monotone:soccer-ball" class="w-6 h-6" />
+            <span class="text-lg font-semi-bold">{{ jogador.gols }}</span>
+          </div>
+        </div>
+      </div>
+    </Box>
   </div>
 </template>

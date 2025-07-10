@@ -9,7 +9,6 @@ const { data: campeonato } = await supabase.from('campeonatos')
 const { data: inscricoes } = await supabase.from('jogadores')
   .select('id, nome, posicao, numero')
   .order('nome', { ascending: true })
-  .neq('posicao', 'Goleiro')
   .eq('campeonato', campeonato.id)
 </script>
 

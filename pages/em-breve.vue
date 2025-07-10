@@ -6,13 +6,14 @@ const { data: campeonato } = await supabase.from('campeonatos')
   .limit(1)
   .maybeSingle()
 
-if (campeonato.status !== 'inscricoes') {
+if (campeonato.status !== 'em-breve') {
   await navigateTo('/')
 }
 </script>
 
 <template>
-  <Menu />
   <Logo />
-  <Inscricoes />
+  <Box class="text-center">
+    Em breve
+  </Box>
 </template>

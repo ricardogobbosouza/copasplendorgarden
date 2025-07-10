@@ -1,13 +1,14 @@
 <script setup lang="ts">
 const supabase = useSupabaseClient()
 const { data: campeonato } = await supabase.from('campeonatos')
-  .select('id, nome')
+  .select('id, nome, status, maximo')
   .order('id', { ascending: false })
   .limit(1)
   .maybeSingle()
 
+
 if (campeonato.status !== 'inscricao') {
-    await navigateTo('/')
+  await navigateTo('/')
 }
 
 const form = reactive({
@@ -19,10 +20,10 @@ const form = reactive({
     tamanho: 'M',
     nome_camisa: null,
     numero: null,
-    premiacao: 'completo',
-    uniforme: 'completo',
-    arbitragem: 'completo',
-    festa: 'dentro',
+    //premiacao: 'completo',
+    //uniforme: 'completo',
+    //arbitragem: 'completo',
+    //festa: 'dentro',
     termos: null
 })
 
@@ -53,11 +54,22 @@ const submit = async () => {
                 tamanho: form.tamanho,
                 nome_camisa: form.nome_camisa,
                 numero: form.numero,
-                premiacao: form.premiacao,
-                uniforme: form.uniforme,
-                arbitragem: form.arbitragem,
-                festa: form.festa
+               //premiacao: form.premiacao,
+               //uniforme: form.uniforme,
+               //arbitragem: form.arbitragem,
+               //festa: form.festa
             })
+
+        const { data: inscricoes } = await supabase.from('jogadores')
+          .select('posicao')
+          .neq('posicao', 'Goleiro')
+          .neq('posicao', 'Técnico')
+          .eq('campeonato', campeonato.id)
+
+        if (campeonato.maximo && inscricoes?.length >= campeonato.maximo) {
+          await supabase.from('campeonato').update({ status: 'inscricoes' }).eq('id', campeonato.id)
+        }
+
         success.value = true
     } catch (e) {
         alert('Problemas na sua inscrição!')
@@ -126,6 +138,7 @@ const onChangeFoto = (e: Event) => {
                             <option value="Meio campo">Meio campo</option>
                             <option value="Zagueiro">Zagueiro</option>
                             <option value="Goleiro">Goleiro</option>
+                            <option value="Técnico">Técnico</option>
                         </select>
                     </label>
                     <label class="block mb-6">
@@ -149,7 +162,7 @@ const onChangeFoto = (e: Event) => {
                 </div>
             </div>
         </Box>
-        <Box title="Preferências">
+        <!--<Box title="Preferências">
             <div class="p-4">
                 <p class="mb-6">
                     Selecione suas preferências abaixo.
@@ -212,7 +225,7 @@ const onChangeFoto = (e: Event) => {
                     </label>
                 </div>
             </div>
-        </Box>
+        </Box>-->
         <Box>
             <div class="p-4">
                 <label class="flex items-center gap-2 mb-4">

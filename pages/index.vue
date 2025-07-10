@@ -7,7 +7,11 @@ const { data: campeonato } = await supabase.from('campeonatos')
   .maybeSingle()
 
 if (campeonato.status === 'inscricao') {
-  await navigateTo('/cadastre-se')
+  await navigateTo('/inscricao')
+}
+
+if (campeonato.status === 'em-breve') {
+  await navigateTo('/em-breve')
 }
 
 if (campeonato.status === 'inscricoes') {
@@ -18,7 +22,7 @@ if (campeonato.status === 'inscricoes') {
 <template>
   <Menu />
   <Logo />
-  <!--<Campeao />-->
+  <Campeao />
   <Partidas />
   <Classificacao />
   <Equipes />

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const fotos = import.meta.glob('@/public/fotos/6/*.jpeg')
-const videos = import.meta.glob('@/public/videos/6/*.mp4')
+const fotos = import.meta.glob('@/public/fotos/2025/*.jpeg')
+const videos = import.meta.glob('@/public/videos/2025/*.mp4')
 </script>
 
 <template>
-  <Box id="fotos-e-videos" title="Fotos e Vídeos">
-    <div class="grid lg:grid-cols-2 gap-6 p-6">
+  <Box id="fotos-e-videos" title="Fotos e Vídeos" v-if="fotos.length || videos.length">
+    <div class="grid lg:grid-cols-2 gap-6 p-6" v-if="fotos.length">
       <img v-for="foto in fotos"
         class="rounded-xl"
         :src="foto.name.replace('public/', '')"
@@ -13,7 +13,7 @@ const videos = import.meta.glob('@/public/videos/6/*.mp4')
         alt=""
       />
     </div>
-    <div class="grid gap-6 p-6">
+    <div class="grid gap-6 p-6" v-if="videos.length">
       <video
         v-for="video in videos"
         class="rounded-xl w-full aspect-video"
