@@ -64,6 +64,7 @@ const submit = async () => {
           .select('posicao')
           .neq('posicao', 'Goleiro')
           .neq('posicao', 'Técnico')
+          .neq('posicao', 'Mesário')
           .eq('campeonato', campeonato.id)
 
         if (campeonato.maximo && inscricoes?.length >= campeonato.maximo) {
@@ -137,8 +138,9 @@ const onChangeFoto = (e: Event) => {
                             <option value="Atacante">Atacante</option>
                             <option value="Meio campo">Meio campo</option>
                             <option value="Zagueiro">Zagueiro</option>
-                            <option value="Goleiro">Goleiro</option>
-                            <option value="Técnico">Técnico</option>
+                            <option value="Goleiro" disabled>Goleiro (Indisponível)</option>
+                            <option value="Técnico">Técnico (Quero participar, mas não consigo jogar)</option>
+                            <option value="Mesário">Mesário (Quero ajudar - Isento da taxa de inscrição)</option>
                         </select>
                     </label>
                     <label class="block mb-6">
@@ -149,6 +151,8 @@ const onChangeFoto = (e: Event) => {
                             <option value="G">G</option>
                             <option value="GG">GG</option>
                             <option value="XG">XG</option>
+                            <option value="XXG">XXG</option>
+                            <option value="XXXG">XXXG</option>
                         </select>
                     </label>
                     <label class="block mb-6">
@@ -226,13 +230,19 @@ const onChangeFoto = (e: Event) => {
                 </div>
             </div>
         </Box>-->
-        <Box>
+        <Box title="Informações da Inscrição e Termo de Aceite">
             <div class="p-4">
+                <div class="space-y-4 mb-6">
+                    <p>Data de início: <b class="text-lg">15/09/2025</b></p>
+                    <p>Valor da inscrição: <b class="text-lg">R$ 160,00</b></p>
+                    <p>*O valor da inscrição será pago ao capitão do seu time</p>
+                </div>
+              
                 <label class="flex items-center gap-2 mb-4">
                     <input required v-model="form.termos" type="checkbox" value="1" name="termos" class="border rounded border-gray-300 scale-125" />
                     <span>
                         Li e aceito o termos descritos no
-                        <a class="text-blue-500 underline" target="_blank" href="/regulamento-6.pdf">regulamento</a>
+                        <a class="text-blue-500 underline" target="_blank" href="/regulamento-7.pdf">regulamento</a>
                     </span>
                 </label>
 

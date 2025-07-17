@@ -8,6 +8,7 @@ const { data: campeonato } = await supabase.from('campeonatos')
 </script>
 
 <template>
+  <!--
   <Box id="patrocinadores" title="Patrocinadores">
     <div class="grid lg:grid-cols-2 gap-6 p-6">
       <img class="w-full rounded-xl" :src="`/patrocinadores/${campeonato.ano}/1.jpg`" alt="" />
@@ -20,4 +21,5 @@ const { data: campeonato } = await supabase.from('campeonatos')
       </div>
     </div>
   </Box>
+  -->
 </template>
