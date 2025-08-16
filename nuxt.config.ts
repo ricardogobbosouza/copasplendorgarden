@@ -15,7 +15,8 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ["/", "/atualizar"],
+      //routes: ["/", "/atualizar"],
+      routes: ["/"],
     },
   },
 })
