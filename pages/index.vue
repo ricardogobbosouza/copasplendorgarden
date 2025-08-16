@@ -23,8 +23,8 @@ if (campeonato.status === 'inscricoes') {
   <Menu />
   <Logo />
   <!--<Campeao />
-  <Partidas />-->
-  <Classificacao />
+  <Partidas />
+  <Classificacao />-->
   <Equipes />
   <Jogadores />
   <Premiacao />
