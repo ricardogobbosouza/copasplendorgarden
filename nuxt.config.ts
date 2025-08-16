@@ -13,10 +13,10 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-09-26',
 
-  nitro: {
+  /*nitro: {
     prerender: {
       //routes: ["/", "/atualizar"],
       routes: ["/"],
     },
-  },
+  },*/
 })
