@@ -22,8 +22,8 @@ if (campeonato.status === 'inscricoes') {
 <template>
   <Menu />
   <Logo />
-  <Campeao />
-  <Partidas />
+  <!--<Campeao />
+  <Partidas />-->
   <Classificacao />
   <Equipes />
   <Jogadores />
