@@ -48,6 +48,7 @@ const goleiros = computed(() => {
     })
 
     return {
+      id: goleiro.id,
       nome: goleiro.nome,
       partidas: partida1.length + partida2.length,
       golsSofridos
@@ -92,12 +93,12 @@ const jogadores = computed(() => {
     </div>
 
     <div v-for="equipe in equipes" :key="equipe.id" class="p-6">
-      <div class="flex items-center justify-center gap-2 border-b p-4">
+      <div class="flex items-center gap-2 border-b p-4">
         <img class="w-12 h-12 object-contain" :src="equipe.imagem" />
         <span class="text-center text-2xl">{{ equipe.nome }}</span>
       </div>
       <div
-        v-for="jogador in jogadores.filter(jogador => jogador.equipe.id === equipe.id)"
+        v-for="jogador in jogadores.filter(jogador => jogador.equipe?.id === equipe.id)"
         :key="jogador.id"
         class="flex items-center gap-2 p-4"
       >
