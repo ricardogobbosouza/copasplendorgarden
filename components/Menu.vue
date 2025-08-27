@@ -44,11 +44,11 @@
         <span class="text-xs lg:text-base">Fotos e Vídeos</span>
       </a>
     </li>
-    <!--<li>
+    <li>
       <a class="text-center font-light hover:underline tracking-widest px-1 md:px2 lg:px-6 py-2 flex items-center justify-center gap-2" href="#patrocinadores">
         <Icon name="bx:dollar-circle" />
         <span class="text-xs lg:text-base">Patrocinadores</span>
       </a>
-    </li>-->
+    </li>
   </ul>
 </template>
